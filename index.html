@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>出産準備リスト</title>
+<meta name="description" content="1月（冬）生まれの赤ちゃんを迎えるための出産準備チェックリスト。ベビーベッド選びとレンタル比較つき。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fbf7f2;
+  --surface: #ffffff;
+  --surface-2: #f4ede4;
+  --text: #3a332d;
+  --muted: #7a6f65;
+  --line: #e8dfd4;
+  --accent: #d9776b;
+  --accent-soft: #fbe7e3;
+  --blue: #4f86a8;
+  --blue-soft: #e3eff6;
+  --green: #5a9a6e;
+  --green-soft: #e4f2e8;
+  --check: #5a9a6e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1d1a17;
+    --surface: #26221e;
+    --surface-2: #2f2a25;
+    --text: #efe8e0;
+    --muted: #a99d91;
+    --line: #3b352f;
+    --accent: #ec9a8f;
+    --accent-soft: #3d2925;
+    --blue: #8dbbd8;
+    --blue-soft: #1f3039;
+    --green: #8cc79d;
+    --green-soft: #213226;
+    --check: #8cc79d;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1d1a17;
+  --surface: #26221e;
+  --surface-2: #2f2a25;
+  --text: #efe8e0;
+  --muted: #a99d91;
+  --line: #3b352f;
+  --accent: #ec9a8f;
+  --accent-soft: #3d2925;
+  --blue: #8dbbd8;
+  --blue-soft: #1f3039;
+  --green: #8cc79d;
+  --green-soft: #213226;
+  --check: #8cc79d;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans JP", system-ui, -apple-system, "Hiragino Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 80px; }
+header.hero { padding: 48px 0 28px; }
+.hero .kicker { color: var(--accent); font-weight: 700; font-size: 14px; letter-spacing: .08em; }
+h1, h2, h3 { font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif; line-height: 1.4; }
+h1 { font-size: clamp(28px, 6vw, 38px); margin: 6px 0 12px; }
+.hero p { color: var(--muted); margin: 0; }
+
+.progress {
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+.progress-row { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.bar { flex: 1; height: 8px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--check); border-radius: 99px; transition: width .3s; }
+.progress button {
+  font: inherit; font-size: 13px; color: var(--muted); background: none;
+  border: 1px solid var(--line); border-radius: 99px; padding: 2px 10px; cursor: pointer;
+}
+
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 8px; }
+nav.toc a {
+  font-size: 14px; color: var(--text); text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 99px; padding: 4px 12px;
+}
+nav.toc a:hover { border-color: var(--accent); }
+
+section { margin-top: 44px; scroll-margin-top: 64px; }
+h2 { font-size: 24px; margin: 0 0 6px; }
+.lead { color: var(--muted); margin: 0 0 16px; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px 20px; margin-bottom: 14px;
+}
+.card h3 { font-size: 17px; margin: 0 0 8px; }
+.card .note { font-size: 14px; color: var(--muted); margin: 4px 0 10px; }
+
+ul.check { list-style: none; margin: 0; padding: 0; }
+ul.check li { border-top: 1px dashed var(--line); }
+ul.check li:first-child { border-top: none; }
+ul.check label {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 8px 0; cursor: pointer;
+}
+ul.check input {
+  appearance: none; -webkit-appearance: none; flex: none;
+  width: 22px; height: 22px; margin-top: 3px;
+  border: 2px solid var(--line); border-radius: 7px; background: var(--surface);
+  display: grid; place-items: center; cursor: pointer; transition: .15s;
+}
+ul.check input:checked { background: var(--check); border-color: var(--check); }
+ul.check input:checked::after {
+  content: ""; width: 6px; height: 11px; border: solid var(--surface);
+  border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px);
+}
+ul.check input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--muted); }
+ul.check small { display: block; color: var(--muted); font-size: 13px; text-decoration: none; }
+
+.tag {
+  display: inline-block; font-size: 12px; font-weight: 700;
+  padding: 1px 8px; border-radius: 99px; margin-left: 6px; vertical-align: 2px;
+}
+.tag.must { background: var(--accent-soft); color: var(--accent); }
+.tag.winter { background: var(--blue-soft); color: var(--blue); }
+
+.callout {
+  border-radius: 14px; padding: 14px 18px; margin: 14px 0;
+  background: var(--green-soft); border-left: 4px solid var(--green);
+}
+.callout.warn { background: var(--accent-soft); border-left-color: var(--accent); }
+.callout.info { background: var(--blue-soft); border-left-color: var(--blue); }
+.callout strong { display: block; margin-bottom: 2px; }
+
+.timeline { list-style: none; padding: 0; margin: 0; position: relative; }
+.timeline li { position: relative; padding: 0 0 18px 28px; }
+.timeline li::before {
+  content: ""; position: absolute; left: 6px; top: 8px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--accent);
+}
+.timeline li:not(:last-child)::after {
+  content: ""; position: absolute; left: 10px; top: 22px; bottom: 0; width: 2px; background: var(--line);
+}
+.timeline b { color: var(--accent); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.grid .card { margin: 0; }
+.grid .card .size { font-size: 13px; color: var(--muted); }
+.pros { font-size: 14px; margin: 6px 0 0; padding-left: 18px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+th { font-size: 13px; color: var(--muted); font-weight: 500; background: var(--surface-2); }
+td.price { white-space: nowrap; font-weight: 700; }
+td a { color: var(--blue); }
+
+footer { margin-top: 56px; font-size: 13px; color: var(--muted); }
+footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">WINTER BABY CHECKLIST</div>
+  <h1>出産準備リスト 👶</h1>
+  <p>1月（真冬）生まれの赤ちゃんを迎えるための準備まとめ。チェックした項目はこの端末のブラウザに保存されます。</p>
+</header>
+
+<div class="progress">
+  <div class="progress-row">
+    <span id="count">0 / 0</span>
+    <div class="bar"><i id="bar"></i></div>
+    <button id="reset" type="button">リセット</button>
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#schedule">スケジュール</a>
+  <a href="#baby">赤ちゃん用品</a>
+  <a href="#winter">冬の対策</a>
+  <a href="#mama">ママ・入院</a>
+  <a href="#papers">手続き</a>
+  <a href="#bed">ベッド選び</a>
+  <a href="#rental">レンタル比較</a>
+</nav>
+
+<section id="schedule">
+  <h2>🗓 スケジュール</h2>
+  <p class="lead">年末年始は店も配送も止まるので、<strong>12月中旬までにそろえ終える</strong>のが目標。</p>
+  <div class="card">
+    <ul class="timeline">
+      <li><b>10〜11月</b>　ベビーベッド・チャイルドシートなど大物を決める／育休を会社に相談</li>
+      <li><b>12月上旬〜中旬</b>　ベッドなどが届く／衣類を水通し／入院バッグを準備</li>
+      <li><b>12月下旬</b>　年末年始休み。買い足しが難しくなる前に最終チェック</li>
+      <li><b>1月</b>　いつ産まれてもいいように待機</li>
+    </ul>
+  </div>
+  <div class="callout">
+    <strong>全部そろえなくてOK</strong>
+    退院後にネットで買えるものも多い。まずは「衣類・おむつ・授乳グッズ・チャイルドシート・ベビーバス」を押さえればなんとかなる。
+  </div>
+</section>
+
+<section id="baby">
+  <h2>🍼 赤ちゃん用品</h2>
+  <p class="lead">出産前にそろえておきたいもの。</p>
+
+  <div class="card">
+    <h3>衣類 <span class="tag must">必須</span></h3>
+    <p class="note">新生児は50〜60サイズ。すぐ大きくなるので買いすぎ注意。</p>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="c-hadagi-s"><span>短肌着 5〜6枚</span></label></li>
+      <li><label><input type="checkbox" data-id="c-hadagi-l"><span>長肌着 or コンビ肌着 5〜6枚</span></label></li>
+      <li><label><input type="checkbox" data-id="c-twoway"><span>ツーウェイオール 3〜4枚<small>冬は厚手のもの</small></span></label></li>
+      <li><label><input type="checkbox" data-id="c-okurumi"><span>おくるみ・アフガン 1〜2枚<small>退院時と外出時に使う</small></span></label></li>
+      <li><label><input type="checkbox" data-id="c-sutai"><span>スタイ 数枚</span></label></li>
+      <li><label><input type="checkbox" data-id="c-mitten"><span>ミトン・帽子<small>冬の退院用</small></span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>おむつ・衛生用品 <span class="tag must">必須</span></h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="o-omutsu"><span>新生児用おむつ 1〜2パック<small>メーカーとの相性があるので大量買いはしない</small></span></label></li>
+      <li><label><input type="checkbox" data-id="o-oshiri"><span>おしりふき 多め</span></label></li>
+      <li><label><input type="checkbox" data-id="o-gomibako"><span>おむつ用ゴミ箱<small>臭いを防ぐタイプが便利</small></span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>授乳 <span class="tag must">必須</span></h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="j-bin"><span>哺乳瓶 1〜2本<small>母乳の予定でもあると安心</small></span></label></li>
+      <li><label><input type="checkbox" data-id="j-milk"><span>粉ミルク or 液体ミルク 少量</span></label></li>
+      <li><label><input type="checkbox" data-id="j-shodoku"><span>消毒グッズ<small>レンジ用・薬液タイプなど</small></span></label></li>
+      <li><label><input type="checkbox" data-id="j-cushion"><span>授乳クッション</span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>お風呂・ケア <span class="tag must">必須</span></h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="b-bath"><span>ベビーバス<small>シンクに置くタイプや空気で膨らませるタイプが省スペース</small></span></label></li>
+      <li><label><input type="checkbox" data-id="b-soap"><span>ベビーソープ</span></label></li>
+      <li><label><input type="checkbox" data-id="b-gauze"><span>ガーゼ・沐浴布・バスタオル</span></label></li>
+      <li><label><input type="checkbox" data-id="b-hoshitsu"><span>保湿剤<small>冬は特に大事</small></span></label></li>
+      <li><label><input type="checkbox" data-id="b-care"><span>綿棒・ベビー用爪切り</span></label></li>
+      <li><label><input type="checkbox" data-id="b-taion"><span>体温計</span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>寝具 <span class="tag must">必須</span></h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="s-bed"><span>ベビーベッド or ベビー布団<small>レンタルもおすすめ → <a href="#bed">ベッド選び</a></small></span></label></li>
+      <li><label><input type="checkbox" data-id="s-sleeper"><span>スリーパー<small>掛け布団は窒息リスクがあるので、冬はこれで寒さ対策</small></span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>移動</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="m-carseat"><span>チャイルドシート <span class="tag must">必須</span><small>車で退院するなら必須（法律で義務）</small></span></label></li>
+      <li><label><input type="checkbox" data-id="m-stroller"><span>ベビーカー<small>産後に必要になってから選んでも間に合う</small></span></label></li>
+      <li><label><input type="checkbox" data-id="m-dakko"><span>抱っこ紐</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section id="winter">
+  <h2>❄️ 1月生まれならではの対策</h2>
+  <div class="card">
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="w-kashitsu"><span>加湿器 <span class="tag winter">冬</span></span></label></li>
+      <li><label><input type="checkbox" data-id="w-ondo"><span>温湿度計<small>室温20〜23℃、湿度50〜60%が目安</small></span></label></li>
+      <li><label><input type="checkbox" data-id="w-okurumi"><span>冬用の厚手おくるみ</span></label></li>
+      <li><label><input type="checkbox" data-id="w-footmuff"><span>ベビーカー用フットマフ</span></label></li>
+    </ul>
+  </div>
+  <div class="callout warn">
+    <strong>電気毛布・湯たんぽは赤ちゃんに直接使わない</strong>
+    低温やけどの危険があります。
+  </div>
+</section>
+
+<section id="mama">
+  <h2>👩 ママ用・入院準備</h2>
+  <div class="card">
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="h-shorts"><span>産褥ショーツ</span></label></li>
+      <li><label><input type="checkbox" data-id="h-pad"><span>産褥パッド</span></label></li>
+      <li><label><input type="checkbox" data-id="h-bra"><span>授乳ブラ</span></label></li>
+      <li><label><input type="checkbox" data-id="h-pajama"><span>前開きのパジャマ</span></label></li>
+      <li><label><input type="checkbox" data-id="h-docs"><span>母子手帳・保険証・診察券をひとまとめに</span></label></li>
+      <li><label><input type="checkbox" data-id="h-taxi"><span>陣痛タクシーの事前登録</span></label></li>
+      <li><label><input type="checkbox" data-id="h-route"><span>病院までのルート確認</span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section id="papers">
+  <h2>📋 手続き（出産後すぐ）</h2>
+  <div class="card">
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="p-shussei"><span>出生届<small>生まれた日を含めて14日以内</small></span></label></li>
+      <li><label><input type="checkbox" data-id="p-jidou"><span>児童手当の申請<small>出生日の翌日から15日以内</small></span></label></li>
+      <li><label><input type="checkbox" data-id="p-hoken"><span>赤ちゃんの健康保険加入</span></label></li>
+      <li><label><input type="checkbox" data-id="p-iryou"><span>乳幼児医療証の申請</span></label></li>
+      <li><label><input type="checkbox" data-id="p-ichiji"><span>出産育児一時金<small>病院の「直接支払制度」が使えるか確認</small></span></label></li>
+      <li><label><input type="checkbox" data-id="p-ikukyu"><span>パパの育休申請<small>会社に早めに相談</small></span></label></li>
+    </ul>
+  </div>
+</section>
+
+<section id="bed">
+  <h2>🛏 ベビーベッド選び</h2>
+  <p class="lead">部屋のレイアウトに関わるので早めに決める。<strong>11月中に決めて12月上旬に届く</strong>ように。</p>
+
+  <div class="card">
+    <h3>まず：大人の寝方で決める</h3>
+    <ul class="pros">
+      <li><b>大人はベッド</b> → ベビーベッドを横に並べる</li>
+      <li><b>大人は布団</b> → ベビー布団、または床置きのベビーベッド</li>
+      <li><b>部屋が狭い</b> → ミニベビーベッド</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>標準サイズ</h3>
+      <div class="size">70×120cm</div>
+      <ul class="pros">
+        <li>2歳ごろまで長く使える</li>
+        <li>場所をとるのが難点</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ミニサイズ</h3>
+      <div class="size">60×90cm</div>
+      <ul class="pros">
+        <li>日本の住宅だとこれを選ぶ人が多い</li>
+        <li>使えるのは1歳前後まで</li>
+        <li>キャスター付きなら昼夜で部屋を移動できる</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>添い寝ベッド</h3>
+      <div class="size">大人のベッドに横付け</div>
+      <ul class="pros">
+        <li>夜中の授乳・おむつ替えが楽</li>
+        <li>大人のベッドと高さが合うか要確認</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>チェックポイント</h3>
+    <ul class="pros">
+      <li><b>PSCマーク・SGマーク</b>付き（安全基準を満たしている証）</li>
+      <li><b>床板の高さ調整</b>ができる（低くすれば腰をかがめず抱き上げられる）</li>
+      <li><b>キャスター付き</b>だと掃除や移動がしやすい</li>
+      <li>マットレスは<b>固め</b>（柔らかいと窒息リスク）</li>
+      <li>枕・ぬいぐるみ・ふわふわの掛け布団は入れない</li>
+    </ul>
+  </div>
+
+  <div class="callout info">
+    <strong>迷ったら「キャスター付きミニベッドをレンタル」</strong>
+    ベビーベッドは半年〜1年しか使わない家庭も多い。結局添い寝になることもよくある。レンタルなら半年で1〜2万円前後、使い終わったら返すだけ。
+  </div>
+</section>
+
+<section id="rental">
+  <h2>📦 レンタルサービス比較</h2>
+  <p class="lead">有名でお手頃な4社。月額は比較サイトに載っている目安です。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>サービス</th><th>月額の目安</th><th>特徴</th></tr></thead>
+      <tbody>
+        <tr><td><b>ナイスベビー</b></td><td class="price">3,000円前後〜</td><td>老舗の大手。月額が安く、ミニベッドもそろっている</td></tr>
+        <tr><td><b>かしてネッと</b><br><small>（ダスキン）</small></td><td class="price">2,750円〜</td><td>ダスキンの安心感。料金も最安クラス</td></tr>
+        <tr><td><b>ベビレンタ</b></td><td class="price">5,000円台〜</td><td>機種が150種類以上と最多。即日発送、3日からの短期もOK</td></tr>
+        <tr><td><b>トイサブ！レンタル</b></td><td class="price">4,000円台〜</td><td>おもちゃのサブスクで有名なトイサブのサービス</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid" style="margin-top:14px">
+    <div class="card">
+      <h3>とにかく安く</h3>
+      <p class="note" style="margin:0">ナイスベビー か ダスキン</p>
+    </div>
+    <div class="card">
+      <h3>機種にこだわる</h3>
+      <p class="note" style="margin:0">ベビレンタ（ココネルなど人気モデルも）</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>借りるときの注意</h3>
+    <ul class="check">
+      <li><label><input type="checkbox" data-id="r-total"><span>送料・返却料を含めた総額で比べる</span></label></li>
+      <li><label><input type="checkbox" data-id="r-plan"><span>半年〜1年プランで比較する<small>長く借りるほど1か月あたりは安くなる</small></span></label></li>
+      <li><label><input type="checkbox" data-id="r-date"><span>お届け日を12月中旬に指定して予約<small>年末の配送ストップを避ける</small></span></label></li>
+      <li><label><input type="checkbox" data-id="r-extend"><span>レンタル期間を延長できるか確認</span></label></li>
+    </ul>
+  </div>
+
+  <p class="note" style="font-size:14px;color:var(--muted)">人気機種：ヤマサキ コンパクトベッド ツーオープン（両側の柵が開くミニベッド）、アップリカ ココネル エアー（折りたためるベビーベッド）。</p>
+
+  <div class="callout warn">
+    <strong>料金は変わります</strong>
+    キャンペーンや期間で変わるので最終的には各公式サイトで確認を。比較記事にはレンタル会社自身が書いたものもあるので、ランキングは話半分で。
+  </div>
+</section>
+
+<footer>
+  <p>参考：
+    <a href="https://my-best.com/5920">my-best</a> ／
+    <a href="https://rental.toysub.net/apps/note/crib_rental_recommended/">トイサブ！</a> ／
+    <a href="https://news.mynavi.jp/kagurental/furniture/babybed.html">マイナビ</a> ／
+    <a href="https://babyrenta.com/blog/article/6819/">ベビレンタ</a> ／
+    <a href="https://spm.co.jp/8972">スペクトル</a>
+  </p>
+  <p>2026年10月時点の情報です。手続きの期限や制度は自治体の案内もあわせて確認してください。</p>
+</footer>
+
+</div>
+<script>
+(function () {
+  var KEY = "baby-prep-checks";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("ul.check input[type=checkbox]"));
+  var count = document.getElementById("count");
+  var bar = document.getElementById("bar");
+
+  function render() {
+    var done = boxes.filter(function (b) { return b.checked; }).length;
+    count.textContent = done + " / " + boxes.length;
+    bar.style.width = (boxes.length ? done / boxes.length * 100 : 0) + "%";
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!state[b.dataset.id];
+    b.addEventListener("change", function () {
+      if (b.checked) state[b.dataset.id] = 1; else delete state[b.dataset.id];
+      save(); render();
+    });
+  });
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!confirm("チェックをすべて外しますか？")) return;
+    state = {}; save();
+    boxes.forEach(function (b) { b.checked = false; });
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>
